@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { VectorMap } from '@south-paw/react-vector-maps';
+import React, { useState } from 'react';
+import BRMap from './map/map';
+import { Container, Map, MapContainer } from './styles';
 
-function App() {
+const App = () => {
+
+  const [focused, setFocused] = useState('None');
+  const [output, setOutput] = useState('None');
+  const [starting, setStarting] = useState('None');
+  const [destiny, setDestiny] = useState('None');
+  const [modal, setModal] = useState(false);
+
+  const layerProps = {
+    onFocus: ({ target }) => setFocused(target.attributes.name.value),
+    onClick: ({ target }) => {
+      const id = target.attributes.id.value;
+
+      if (starting === 'None') {
+        setStarting(id);
+      } else if (destiny === 'None') {
+        setDestiny(id);
+      } else {
+        setStarting(id);
+        setDestiny('None');
+      }
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <MapContainer>
+        <Map>
+          <VectorMap {...BRMap} layerProps={layerProps} checkedLayers={[starting, destiny]} />
+        </Map>
+      </MapContainer>
+    </Container >
   );
 }
 
