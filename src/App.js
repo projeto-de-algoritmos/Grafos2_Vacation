@@ -1,5 +1,6 @@
 import { VectorMap } from '@south-paw/react-vector-maps';
 import React, { useState } from 'react';
+import ReasultModal from './components/ResultModal';
 import SideBar from './components/SideBar';
 import BRMap from './map/map';
 import { Container, Map, MapContainer } from './styles';
@@ -30,6 +31,11 @@ const App = () => {
 
   return (
     <Container>
+      {modal && <ReasultModal
+        visible={modal}
+        setVisible={setModal}
+        output={output}
+      />}
       <SideBar
         starting={starting}
         setStarting={setStarting}

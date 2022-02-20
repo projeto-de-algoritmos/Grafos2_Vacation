@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonContainer, ConfirmButton, Contianer, LocalContainer, Logo, LogoContainer, Text } from './styles';
 import states from './states'
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 const SideBar = ({ starting, setStarting, destiny, setDestiny, openModal}) => {
   return(
