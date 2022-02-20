@@ -1,5 +1,6 @@
 import { VectorMap } from '@south-paw/react-vector-maps';
 import React, { useState } from 'react';
+import SideBar from './components/SideBar';
 import BRMap from './map/map';
 import { Container, Map, MapContainer } from './styles';
 
@@ -29,6 +30,13 @@ const App = () => {
 
   return (
     <Container>
+      <SideBar
+        starting={starting}
+        setStarting={setStarting}
+        destiny={destiny}
+        setDestiny={setDestiny}
+        openModal={() => setModal(true)}
+      />
       <MapContainer>
         <Map>
           <VectorMap {...BRMap} layerProps={layerProps} checkedLayers={[starting, destiny]} />
