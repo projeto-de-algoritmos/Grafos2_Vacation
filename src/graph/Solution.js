@@ -1,5 +1,3 @@
-import React from 'react';
-
 class Solution {
     static question(start_location, destination) {
         let capitais = [

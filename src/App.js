@@ -1,5 +1,5 @@
 import { VectorMap } from '@south-paw/react-vector-maps';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReasultModal from './components/ResultModal';
 import SideBar from './components/SideBar';
 import Solution from './graph/Solution';
@@ -12,23 +12,45 @@ const App = () => {
   const [output, setOutput] = useState('None');
   const [starting, setStarting] = useState('None');
   const [destiny, setDestiny] = useState('None');
+  const [startingId, setStartingId] = useState('None');
+  const [destinyId, setDestinyId] = useState('None');
   const [modal, setModal] = useState(false);
 
   const layerProps = {
     onFocus: ({ target }) => setFocused(target.attributes.name.value),
     onClick: ({ target }) => {
       const id = target.attributes.id.value;
+      const capital = target.attributes.capital.value;
 
       if (starting === 'None') {
-        setStarting(id);
+        setStarting(capital);
+        setStartingId(id);
       } else if (destiny === 'None') {
-        setDestiny(id);
+        setDestiny(capital);
+        setDestinyId(id);
       } else {
-        setStarting(id);
+        setStarting(capital);
+        setStartingId(id);
         setDestiny('None');
+        setDestinyId('None');
       }
     }
   };
+
+  useEffect(() => {
+    if(starting === 'None' && destiny === 'None'){
+      setOutput('Selecione os estados');
+      return;
+    }
+    if (starting && destiny) {
+      try {
+        const result = Solution.question(starting, destiny);
+        setOutput(result);
+      } catch {}
+    }
+
+  }, [starting, destiny]);
+
 
   return (
     <Container>
@@ -38,15 +60,15 @@ const App = () => {
         output={output}
       />}
       <SideBar
-        starting={starting}
-        setStarting={setStarting}
-        destiny={destiny}
-        setDestiny={setDestiny}
+        starting={startingId}
+        setStarting={setStartingId}
+        destiny={destinyId}
+        setDestiny={setDestinyId}
         openModal={() => setModal(true)}
       />
       <MapContainer>
         <Map>
-          <VectorMap {...BRMap} layerProps={layerProps} checkedLayers={[starting, destiny]} />
+          <VectorMap {...BRMap} layerProps={layerProps} checkedLayers={[startingId, destinyId]} />
         </Map>
       </MapContainer>
     </Container >

@@ -129,12 +129,12 @@ const states = [
   {
     "id": "SE",
     "name": "Sergipe",
-    "capital:": "Aracaju",
+    "capital": "Aracaju",
   },
   {
     "id": "SP",
     "name": "São Paulo",
-    "capital:": "São Paulo",
+    "capital": "São Paulo",
   },
   {
     "id": "TO",
