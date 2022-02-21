@@ -44,7 +44,7 @@ const states = [
   {
     "id": "GO",
     "name": "Goiás",
-    "capital": "Gaoiânia",
+    "capital": "Goiânia",
   },
   {
     "id": "MA",
