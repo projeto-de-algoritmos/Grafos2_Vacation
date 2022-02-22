@@ -19,7 +19,6 @@ const ReasultModal = ({ visible, setVisible, output, starting, destiny}) => {
           {output ? 
           <div>
             <p>{`Você ir percorrer ${new Intl.NumberFormat('pt-br').format(output)} Kms de ${starting} à ${destiny}`}</p>
-            <p>{`Com a gasolina custando 7 reais, você irá gastar aproximadamente R$${new Intl.NumberFormat('pt-br').format(output * 7)} reais`}</p>
           </div>
             : 
             <p>Selecione os estados</p>

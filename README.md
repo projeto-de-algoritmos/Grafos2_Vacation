@@ -1,5 +1,7 @@
 # Grafos 2 - Vacation
 
+![Logo](./doc/logo.png)
+
 **Número da Lista**: 2<br>
 **Conteúdo da Disciplina**: Grafos 2<br>
 
@@ -13,7 +15,10 @@
 O vacation é uma aplicação de viajem, que considera apenas as capitais do Brasil como destinos válidos para viajar. Ela retorna a distancia minima entre as opções de viajem utilizando o algoritmo de Djikstra.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+![Tela inicial](./doc/img1.png)
+![Tela com os estados selecionados](./doc/img2.png)
+![Tela com o resultado](./doc/img3.png)
 
 ## Instalação 
 **Linguagem**: JavaScript<br>
@@ -32,4 +37,4 @@ Para executar o projeto:
 ```
 
 ## Uso 
-Basta selecionar o estados de origem, estado de destino e gerar a distancia.
+Basta selecionar o estados de origem, estado de destino e gerar a distância.
