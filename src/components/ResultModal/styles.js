@@ -45,10 +45,7 @@ export const Body = styled.div`
   align-items: center;
   font-size: 1.3rem;
   text-align: center;
-  overflow: auto;
-  p {
-    height: 300px;
-  }
+  padding: 20px;
 `;
 
 export const Footer = styled.div`

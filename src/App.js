@@ -38,18 +38,18 @@ const App = () => {
   };
 
   useEffect(() => {
-    if(starting === 'None' && destiny === 'None'){
-      setOutput('Selecione os estados');
-      return;
-    }
-    if (starting && destiny) {
+    if (starting !== 'None' && destiny !== 'None') {
       try {
         const result = Solution.question(starting, destiny);
         setOutput(result);
       } catch {}
+    } else {
+      setOutput(null);
+      return;
     }
 
   }, [starting, destiny]);
+
 
 
   return (
@@ -58,12 +58,18 @@ const App = () => {
         visible={modal}
         setVisible={setModal}
         output={output}
+        starting={starting}
+        destiny={destiny}
       />}
       <SideBar
-        starting={startingId}
-        setStarting={setStartingId}
-        destiny={destinyId}
-        setDestiny={setDestinyId}
+        startingId={startingId}
+        setStartingId={setStartingId}
+        destinyId={destinyId}
+        setDestinyId={setDestinyId}
+        starting={starting}
+        setStarting={setStarting}
+        destiny={destiny}
+        setDestiny={setDestiny}
         openModal={() => setModal(true)}
       />
       <MapContainer>

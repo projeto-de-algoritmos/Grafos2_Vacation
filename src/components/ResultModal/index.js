@@ -1,7 +1,7 @@
 import React from 'react';
 import { Body, Container, Footer, ModalBackground, TitleCloseBtn } from './styles';
 
-const ReasultModal = ({ visible, setVisible, output}) => {
+const ReasultModal = ({ visible, setVisible, output, starting, destiny}) => {
   return(
     <ModalBackground>
       <Container>
@@ -14,9 +14,16 @@ const ReasultModal = ({ visible, setVisible, output}) => {
             X
           </button>
         </TitleCloseBtn>
-        <h1>Capitais que poderá visitar durante as suas férias</h1>
+        <h1>Resultado:</h1>
         <Body>
-          <p>{output}</p>
+          {output ? 
+          <div>
+            <p>{`Você ir percorrer ${new Intl.NumberFormat('pt-br').format(output)} Kms de ${starting} à ${destiny}`}</p>
+            <p>{`Com a gasolina custando 7 reais, você irá gastar aproximadamente R$${new Intl.NumberFormat('pt-br').format(output * 7)} reais`}</p>
+          </div>
+            : 
+            <p>Selecione os estados</p>
+          }
         </Body>
         <Footer>
         <button

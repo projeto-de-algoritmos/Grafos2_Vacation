@@ -3,7 +3,10 @@ import { ButtonContainer, ConfirmButton, Contianer, LocalContainer, Logo, LogoCo
 import states from './states'
 import logo from '../../assets/logo.png';
 
-const SideBar = ({ starting, setStarting, destiny, setDestiny, openModal}) => {
+const SideBar = ({
+  starting, setStarting, destiny, setDestiny, openModal,
+  startingId, setStartingId, destinyId, setDestinyId,
+}) => {
   return(
     <Contianer>
       <LogoContainer>
@@ -12,14 +15,20 @@ const SideBar = ({ starting, setStarting, destiny, setDestiny, openModal}) => {
       </LogoContainer>
       <LocalContainer>
         <p>Local de origem: </p>
-        <select value={starting} onChange={(e) => setStarting(e.target.value)}>
+        <select value={startingId} onChange={(e) => {
+          setStartingId(e.target.value)
+          setStarting(e.target[e.target.selectedIndex].className);
+        }}>
           <option id='None' key='None'>Escola um local</option>
-          {states.map((state) => <option value={state.id} key={state.id}>{`${state.id} - ${state.capital}`}</option>)}
+          {states.map((state) => <option value={state.id} className={state.capital} key={state.id}>{`${state.id} - ${state.capital}`}</option>)}
         </select>
         <p>Local de destino: </p>
-        <select value={destiny} onChange={(e) => setDestiny(e.target.value)}>
+        <select value={destinyId} onChange={(e) => {
+          setDestinyId(e.target.value);
+          setDestiny(e.target[e.target.selectedIndex].className);
+        }}>
           <option id='None' key='None'>Escola um local</option>
-          {states.map((state) => <option value={state.id} key={state.id}>{`${state.id} - ${state.capital}`}</option>)}
+          {states.map((state) => <option value={state.id} className={state.capital} key={state.id}>{`${state.id} - ${state.capital}`}</option>)}
         </select>
       </LocalContainer>
       <ButtonContainer>
